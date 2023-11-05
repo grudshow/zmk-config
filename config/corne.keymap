@@ -13,10 +13,11 @@
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <13 14 15 16 19 20 21 22 36>;
         };
     };
