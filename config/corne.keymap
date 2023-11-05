@@ -27,26 +27,16 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
 &kp TAB    &kp Q           &kp W           &kp F         &kp P             &kp B        &kp J      &kp L             &kp U        &kp Y            &kp SEMICOLON   &kp ESCAPE
-&kp LCTRL  &mt LEFT_WIN A  &mt LEFT_ALT R  &mt LCTRL S   &mt LEFT_SHIFT T  &kp G        &kp M      &mt LEFT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt LEFT_WIN O  &kp SQT
+&kp LCTRL  &hm LEFT_WIN A  &hm LEFT_ALT R  &hm LCTRL S   &hm LEFT_SHIFT T  &kp G        &kp M      &hm LEFT_SHIFT N  &hm RCTRL E  &hm RIGHT_ALT I  &hm LEFT_WIN O  &kp SQT
 &kp LSHFT  &kp Z           &kp X           &kp C         &kp D             &kp V        &kp K      &kp H             &kp COMMA    &kp DOT          &kp FSLH        &kp BACKSPACE
-                                           &lt 1 ESCAPE  &kp TAB           &kp ENTER    &kp SPACE  &kp BACKSPACE     &mo 2
+                                           &hm 1 ESCAPE  &kp TAB           &kp ENTER    &kp SPACE  &kp BACKSPACE     &mo 2
             >;
         };
 
         lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
 &kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
@@ -57,11 +47,6 @@
         };
 
         raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
 &kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
