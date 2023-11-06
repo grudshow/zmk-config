@@ -7,6 +7,8 @@
 
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
+#define HM_TAPPING_TERM_QUICK 175
+#define HM_TAPPING_TERM_REQUIRE 300
 
 / {
 
@@ -31,8 +33,8 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
-            quick-tap-ms = <175>;                // repeat on tap-into-hold
-            require-prior-idle-ms;
+            quick-tap-ms = <HM_TAPPING_TERM_QUICK>;                // repeat on tap-into-hold
+            require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -45,8 +47,8 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
-            quick_tap_ms = <175>;
-            require-prior-idle-ms;
+            quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
+            require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -63,7 +65,7 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick_tap_ms = <175>;
+            quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
             // hold-trigger-on-release;             // requires PR #1423
         };
@@ -76,7 +78,7 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick_tap_ms = <175>;
+            quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             // hold-trigger-on-release;             // requires PR #1423
         };
