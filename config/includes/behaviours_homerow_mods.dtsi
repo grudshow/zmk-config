@@ -5,7 +5,7 @@
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
 #define KEYS_T LH2 LH1 LH0 RH0 RH1 RH2
 
-#define HM_TAPPING_TERM 220
+#define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
 #define HM_TAPPING_TERM_QUICK 175
 #define HM_TAPPING_TERM_REQUIRE 400
@@ -25,7 +25,7 @@
             quick-tap-ms = <HM_TAPPING_TERM_QUICK>;                // repeat on tap-into-hold
             require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
-            hold-trigger-on-release;             // requires PR #1423
+            hold-trigger-on-release;           
         };
 
         hm_r: homerow_mods_right {
@@ -39,48 +39,9 @@
             quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
             require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
-            hold-trigger-on-release;             // requires PR #1423
+            hold-trigger-on-release;         
         };
-
-
-        // Positional Homerow mods for shift
-        // Use faster tapping term and disable some features that may
-        // cause false negatives.
-        hm_shift_l: hm_shift_l {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_FAST_LEFT";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
-            hold-trigger-key-positions = <KEYS_R KEYS_T>;
-            // hold-trigger-on-release;             // requires PR #1423
-        };
-
-        hm_shift_r: hm_shift_r {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_FAST_RIGHT";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
-            hold-trigger-key-positions = <KEYS_L KEYS_T>;
-            // hold-trigger-on-release;             // requires PR #1423
-        };
-
-        /*
-         * Non-Positional Homerow Mods
-         * Used for &mm_grescm_gui behavior on left hand.
-         *
-         * Usage: &hm LSHFT T
-         * Tap: T
-         * Tap-Tap-Hold: Repeat T
-         * Hold: LSHIFT
-         */
+        
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";

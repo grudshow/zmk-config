@@ -1,0 +1,24 @@
+#include <dt-bindings/zmk/outputs.h>
+
+#define TD_TAPPING_TERM 300
+
+/ {
+
+    behaviors {
+			
+        lt_num_word: lt_num_word {
+            compatible = "zmk,behavior-hold-tap";
+            label = "lt_num_word";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+
+            #ifdef HAS_UROB
+                bindings = <&mo>, <&num_word>;
+            #else
+                bindings = <&mo>, <&tog>;
+            #endif
+        };
+			
+		}
+}
