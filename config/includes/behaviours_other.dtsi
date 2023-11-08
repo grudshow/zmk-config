@@ -1,4 +1,4 @@
-#include <dt-bindings/zmk/outputs.h>
+// Make sure settings.dtsi is included before this file
 
 #define TD_TAPPING_TERM 300
 
@@ -13,11 +13,7 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
 
-            #ifdef HAS_UROB
-                bindings = <&mo>, <&num_word>;
-            #else
-                bindings = <&mo>, <&tog>;
-            #endif
+            bindings = <&mo>, <&num_word>;
         };
 			
 		};
