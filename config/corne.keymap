@@ -64,15 +64,6 @@
     #endif
 }; 
 
-&caps_word_capslock {
-    disable-on-keys = <
-        SPACE TAB ENTER ESCAPE
-        COMMA DOT SEMI COLON QUESTION EXCLAMATION
-        SLASH BACKSLASH SINGLE_QUOTE DOUBLE_QUOTES GRAVE
-        LPAR RPAR LBKT RBKT LBRC RBRC LT GT
-    >;
-};
-
 &num_word {
     layers = <NUM_WORD>;
     continue-list = <
@@ -118,7 +109,7 @@
                 label = "mm_shift_caps_word_l";
                 #binding-cells = <0>;
 
-                bindings = <&sk LSHFT>, <&caps_word_capslock>;
+                bindings = <&sk LSHFT>, <&caps_word>;
 
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
@@ -128,7 +119,7 @@
                 label = "mm_shift_caps_word_r";
                 #binding-cells = <0>;
 
-                bindings = <&sk RSHFT>, <&caps_word_capslock>;
+                bindings = <&sk RSHFT>, <&caps_word>;
 
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
