@@ -23,11 +23,7 @@
             label = "mm_shift_caps_word_l";
             #binding-cells = <0>;
 
-            #ifdef HAS_CAPSLOCK
-                bindings = <&sk LSHFT>, <&caps_word_capslock>;
-            #else
-                bindings = <&sk LSHFT>, <&caps_word>;
-            #endif
+            bindings = <&sk LSHFT>, <&caps_word_capslock>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -37,11 +33,7 @@
             label = "mm_shift_caps_word_r";
             #binding-cells = <0>;
 
-            #ifdef HAS_CAPSLOCK
-                bindings = <&sk RSHFT>, <&caps_word_capslock>;
-            #else
-                bindings = <&sk RSHFT>, <&caps_word>;
-            #endif
+            bindings = <&sk RSHFT>, <&caps_word_capslock>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };

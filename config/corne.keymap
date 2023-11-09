@@ -10,25 +10,180 @@
 #include <dt-bindings/zmk/keys.h>
 
 // PERSONAL INCLUDES
-#include "includes/behaviours_homerow_mods.dtsi"
-#include "includes/behaviours_mod_morph.dtsi"
-#include "includes/behaviours_other.dtsi"
-#include "includes/settings.dtsi"
+//#include "includes/behaviours_homerow_mods.dtsi"
+//#include "includes/behaviours_mod_morph.dtsi"
+//#include "includes/behaviours_other.dtsi"
+//#include "includes/settings.dtsi"
 
-// define layer numbers
+// DEFINE LAYER NUMBERS
 #define NUM 3
 #define NUM_WORD 4
 
+#include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
+#define KEYS_T LH2 LH1 LH0 RH0 RH1 RH2
+
+#define HM_TAPPING_TERM 300
+#define HM_TAPPING_TERM_FAST 200
+#define HM_TAPPING_TERM_QUICK 175
+#define HM_TAPPING_TERM_REQUIRE 400
+
+/*
+ * Layer Tap Settings
+ */
+&lt {
+    // Increase layer tap time
+    tapping-term-ms = <300>;
+
+    // Quickly tap-tap-holding the lt button will repeat the tap behavior
+    // For example enter-enter-hold, will output multiple enter while you
+    // keep holding the key.
+    // But holding enter without double tapping, will activate the layer.
+     quick-tap-ms = <200>;
+
+     flavor = "balanced";
+};
+
+
+/*
+ * Caps Word Settings
+ */
+&caps_word {
+    // Allow caps word to continue even when minus or underscore
+    // are pressed.
+    // Also prevent mod presses from cancelling caps word.
+    continue-list = <
+      UNDERSCORE MINUS
+      LCTRL LALT LGUI LSHFT
+      RCTRL RALT RGUI RSHFT
+      BACKSPACE
+    >;
+    #ifdef HAS_UROB
+        /delete-property/ ignore-modifiers;
+    #endif
+}; 
+
+&caps_word_capslock {
+    disable-on-keys = <
+        SPACE TAB ENTER ESCAPE
+        COMMA DOT SEMI COLON QUESTION EXCLAMATION
+        SLASH BACKSLASH SINGLE_QUOTE DOUBLE_QUOTES GRAVE
+        LPAR RPAR LBKT RBKT LBRC RBRC LT GT
+    >;
+};
+
+&num_word {
+    layers = <NUM_WORD>;
+    continue-list = <
+        BACKSPACE DELETE DOT COMMA
+        SLASH ASTERISK PLUS MINUS EQUAL DOLLAR
+        RS(SPACE)
+    >;
+    ignore-modifiers;  // modifiers don't deactivate the layer
+};
+
+
 / {
+    
+        behaviors {
+            
+            lt_num_word: lt_num_word {
+                compatible = "zmk,behavior-hold-tap";
+                label = "lt_num_word";
+                #binding-cells = <2>;
+                flavor = "balanced";
+                tapping-term-ms = <200>;
+
+                bindings = <&mo>, <&num_word>;
+            };
+
+            
+            /*
+             * Sticky shift + Caps Word
+             *
+             * Usage: &mm_shift_caps_word_l or &mm_shift_caps_word_r
+             * Tap: Sticky shift
+             * HMR-Shift-Tap: Caps Word
+             * Double Tap: Caps Word
+             *   - The first tap activates sticky shift mod
+             *   - The second tap is now a shift + press, which activates
+             *     the mod morph
+             * Hold: Shift
+             *
+             * Credits to urob for this genius combo.
+             */
+            mm_shift_caps_word_l: mm_shift_caps_word_l {
+                compatible = "zmk,behavior-mod-morph";
+                label = "mm_shift_caps_word_l";
+                #binding-cells = <0>;
+
+                bindings = <&sk LSHFT>, <&caps_word_capslock>;
+
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+
+            mm_shift_caps_word_r: mm_shift_caps_word_r {
+                compatible = "zmk,behavior-mod-morph";
+                label = "mm_shift_caps_word_r";
+                #binding-cells = <0>;
+
+                bindings = <&sk RSHFT>, <&caps_word_capslock>;
+
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+
+
+            hm_l: homerow_mods_left {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS_LEFT";
+                #binding-cells = <2>;
+                bindings = <&kp>,  <&kp>;
+
+                flavor = "balanced";
+                tapping-term-ms = <HM_TAPPING_TERM>;
+                quick-tap-ms = <HM_TAPPING_TERM_QUICK>;                // repeat on tap-into-hold
+                require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
+                hold-trigger-key-positions = <KEYS_R KEYS_T>;
+                hold-trigger-on-release;           
+            };
+
+            hm_r: homerow_mods_right {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS_RIGHT";
+                #binding-cells = <2>;
+                bindings = <&kp>, <&kp>;
+
+                flavor = "balanced";
+                tapping-term-ms = <HM_TAPPING_TERM>;
+                quick_tap_ms = <HM_TAPPING_TERM_QUICK>;
+                require-prior-idle-ms=<HM_TAPPING_TERM_REQUIRE>;
+                hold-trigger-key-positions = <KEYS_L KEYS_T>;
+                hold-trigger-on-release;         
+            };
+            
+            hm: homerow_mods {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS";
+                #binding-cells = <2>;
+                bindings = <&kp>, <&kp>;
+
+                flavor = "balanced";
+                tapping-term-ms = <HM_TAPPING_TERM>;
+                quick_tap_ms = <200>;
+            };
+
+    };
+
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp TAB                 &kp Q                &kp W              &kp F           &kp P                   &kp B        &kp J      &kp L                   &kp U           &kp Y                   &kp SEMICOLON           &kp ESCAPE
+&trans                  &kp Q                &kp W              &kp F           &kp P                   &kp B        &kp J      &kp L                   &kp U           &kp Y                   &kp SEMICOLON           &trans
 &mm_shift_caps_word_l   &hm_l LEFT_WIN A     &hm_l LEFT_ALT R   &hm_l LCTRL S   &hm_l LSHFT T           &kp G        &kp M      &hm_r RSHFT N           &hm_r RCTRL E   &hm_r RIGHT_ALT I       &hm_r LEFT_WIN O        &mm_shift_caps_word_r 
-&kp LSHFT               &kp Z                &kp X              &kp C           &kp D                   &kp V        &kp K      &kp H                   &kp COMMA       &kp DOT                 &kp FSLH                &kp BACKSPACE
+&trans                  &kp Z                &kp X              &kp C           &kp D                   &kp V        &kp K      &kp H                   &kp COMMA       &kp DOT                 &kp FSLH                &trans
                                                                 &lt 1 ESC       &kp TAB                 &kp ENTER    &kp SPACE  &kp BACKSPACE           &lt_num_word NUM NUM 
             >;
         };
