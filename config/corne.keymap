@@ -29,7 +29,7 @@
 &trans                  &kp Q                &kp W              &kp F           &kp P                   &kp B        &kp J      &kp L                   &kp U           &kp Y                   &kp SEMICOLON           &trans
 &mm_shift_caps_word_l   &hm_l LEFT_WIN A     &hm_l LEFT_ALT R   &hm_l LCTRL S   &hm_l LSHFT T           &kp G        &kp M      &hm_r RSHFT N           &hm_r RCTRL E   &hm_r RIGHT_ALT I       &hm_r LEFT_WIN O        &mm_shift_caps_word_r 
 &trans                  &kp Z                &kp X              &kp C           &kp D                   &kp V        &kp K      &kp H                   &kp COMMA       &kp DOT                 &kp FSLH                &trans
-                                                                &lt 1 ESC       &kp TAB                 &kp ENTER    &kp SPACE  &kp BACKSPACE           &lt_num_word NUM NUM 
+                                                                &lt 1 ESC       &kp TAB                 &kp ENTER    &kp SPACE  &mm_bspc_del_layer      &lt_num_word NUM NUM 
             >;
         };
 
