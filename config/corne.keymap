@@ -39,7 +39,7 @@
     &trans                      &kp Z                       &kp X                       &kp C                       &kp D                       &kp V                          &kp K                       &kp H                       &kp COMMA                   &kp DOT                     &kp FSLH                    &trans
 //╰───────────────────────────┴───────────────────────────┴───────────────────────────┼───────────────────────────┼───────────────────────────┼───────────────────────────┤  ├───────────────────────────┼───────────────────────────┼───────────────────────────┼───────────────────────────┴───────────────────────────┴───────────────────────────╯
 //                                                                                    │ BASE LAYOUT + ESC         │ TAB                       │ ENTER                     │  │ SPACE                     │ BSPPC + DEL + LAYER       │ NUM WORD                  │
-                                                                                        &lt BASE ESC                &kp TAB                     &kp ENTER                      &kp SPACE                   &mm_bspc_del_layer          &lt_num_word NUM NUM
+                                                                                        &lt BASE ESC                &lt 2 TAB                     &kp ENTER                      &kp SPACE                   &mm_bspc_del_layer          &lt_num_word NUM NUM
 //                                                                                    ╰───────────────────────────┴───────────────────────────┴───────────────────────────╯  ╰───────────────────────────┴───────────────────────────┴───────────────────────────╯
 
             >;
@@ -56,11 +56,18 @@
 
         raise_layer {
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
-            >;
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  `       │  ~       │
+            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp GRAVE   &kp TILDE
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  "       │  [       │  {       │  (       │          │   │   /      │  -       │  =       │     :    │  ;       │
+            &kp DQT  &kp LBKT   &kp LBRC   &kp LPAR   &trans         &kp FSLH   &kp MINUS  &kp EQUAL  &kp COLON   &kp SEMI
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  '       │  ]       │  }       │  )       │          │   │    \     │  _       │  +       │  │       │   ?      │
+            &kp SQT     &kp RBKT   &kp RBRC   &kp RPAR   &trans         &kp BSLH   &kp UNDER  &kp PLUS   &kp PIPE  &kp QMARK
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯;
         };
         
         num_layer {
