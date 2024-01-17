@@ -17,8 +17,8 @@
 
 // DEFINE LAYER NUMBERS
 #define BASE 1
+#define SYM 2
 #define NUM 3
-#define NUM_WORD 4
 
 / {
 
@@ -39,7 +39,7 @@
     &trans                      &kp Z                       &kp X                       &kp C                       &kp D                       &kp V                          &kp K                       &kp H                       &kp COMMA                   &kp DOT                     &kp FSLH                    &trans
 //╰───────────────────────────┴───────────────────────────┴───────────────────────────┼───────────────────────────┼───────────────────────────┼───────────────────────────┤  ├───────────────────────────┼───────────────────────────┼───────────────────────────┼───────────────────────────┴───────────────────────────┴───────────────────────────╯
 //                                                                                    │ BASE LAYOUT + ESC         │ TAB                       │ ENTER                     │  │ SPACE                     │ BSPPC + DEL + LAYER       │ NUM WORD                  │
-                                                                                        &lt BASE ESC                &lt 2 TAB                     &kp ENTER                      &kp SPACE                   &mm_bspc_del_layer          &lt_num_word NUM NUM
+                                                                                        &lt BASE ESC                &lt SYM TAB                 &kp ENTER                      &kp SPACE                   &mm_bspc_del_layer          &lt_num_word NUM NUM
 //                                                                                    ╰───────────────────────────┴───────────────────────────┴───────────────────────────╯  ╰───────────────────────────┴───────────────────────────┴───────────────────────────╯
 
             >;
@@ -54,33 +54,24 @@
             >;
         };
 
-        raise_layer {
+        sym_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  `       │  ~       │
-            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp GRAVE   &kp TILDE
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  "       │  [       │  {       │  (       │          │   │   /      │  -       │  =       │     :    │  ;       │
-            &kp DQT  &kp LBKT   &kp LBRC   &kp LPAR   &trans         &kp FSLH   &kp MINUS  &kp EQUAL  &kp COLON   &kp SEMI
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  '       │  ]       │  }       │  )       │          │   │    \     │  _       │  +       │  │       │   ?      │
-            &kp SQT     &kp RBKT   &kp RBRC   &kp RPAR   &trans         &kp BSLH   &kp UNDER  &kp PLUS   &kp PIPE  &kp QMARK
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+//│                !         @         #            $         %            ^               &         *      (           )
+    &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT     &kp CARET  &kp AMPS   &kp ASTRK   &kp LPAR   &kp RPAR   &trans                                                                                              
+//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+//│          │          │          │          │          │          │   │  -       │  =       │     `    │  [       │    ]
+    &trans     &trans     &trans     &trans     &trans      &trans        &kp MINUS  &kp EQUAL  &kp GRAVE   &kp LBKT  &kp RBKT    &trans
+//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+//│          │          │          │          │          │          │   │  _       │  +       │   ~      │   {      │   }
+    &trans     &trans      &trans    &trans      &trans    &trans         &kp UNDER  &kp PLUS   &kp TILDE  &kp LBRC   &kp RBRC    &trans
+//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
+                                     &trans     &trans         &trans     &trans     &trans     &trans
+//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
                 >;
         };
         
         num_layer {
-            bindings = <
-&trans                  &trans                &kp NUMBER_7              &kp NUMBER_8           &kp NUMBER_9                   &trans                 &trans      &trans                   &trans           &trans                &trans        &kp ESCAPE
-&bt BT_CLR              &bt BT_SEL 0          &hm_l LALT NUMBER_4       &hm_l LCTRL NUMBER_5   &hm_l LSHFT NUMBER_6           &kp NUMBER_0           &trans      &trans                   &trans           &trans                &trans        &trans 
-&trans                  &trans                &kp NUMBER_1              &kp NUMBER_2           &kp NUMBER_3                   &trans                 &trans      &trans                   &trans           &trans                &trans        &kp BACKSPACE
-                                                                        &trans                 &trans                         &trans                 &trans      &trans                   &trans 
-            >;
-        };
-
-        num_word_layer {
             bindings = <
 &trans                  &trans                &kp NUMBER_7              &kp NUMBER_8           &kp NUMBER_9                   &trans                 &trans      &trans                   &trans           &trans                &trans        &kp ESCAPE
 &bt BT_CLR              &bt BT_SEL 0          &hm_l LALT NUMBER_4       &hm_l LCTRL NUMBER_5   &hm_l LSHFT NUMBER_6           &kp NUMBER_0           &trans      &trans                   &trans           &trans                &trans        &trans 
