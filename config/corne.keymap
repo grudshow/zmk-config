@@ -60,8 +60,8 @@
 //│                !         @         #            $         %            ^               &         *      (           )
     &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT     &kp CARET  &kp AMPS   &kp ASTRK   &kp LPAR   &kp RPAR   &trans                                                                                              
 //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-//│          │          │          │          │          │          │   │  -       │  =       │     `    │  [       │    ]
-    &trans     &trans     &trans     &trans     &trans      &trans        &kp MINUS  &kp EQUAL  &kp GRAVE   &kp LBKT  &kp RBKT    &trans
+//│          │          │          │   "      │    '     │          │   │  -       │  =       │     `    │  [       │    ]
+    &trans     &trans     &trans     &kp DQT     &kp SQT      &trans        &kp MINUS  &kp EQUAL  &kp GRAVE   &kp LBKT  &kp RBKT    &trans
 //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 //│          │          │          │          │          │          │   │  _       │  +       │   ~      │   {      │   }
     &trans     &trans      &trans    &trans      &trans    &trans         &kp UNDER  &kp PLUS   &kp TILDE  &kp LBRC   &kp RBRC    &trans
