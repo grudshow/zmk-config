@@ -74,10 +74,10 @@
         
         num_layer {
             bindings = <
-&trans                  &trans                &kp NUMBER_7              &kp NUMBER_8           &kp NUMBER_9                   &trans                 &trans      &trans                   &trans           &trans                &trans                 &trans
-&trans                  &trans                &hm_l LALT NUMBER_4       &hm_l LCTRL NUMBER_5   &hm_l LSHFT NUMBER_6           &kp NUMBER_0           &trans      &kp LEFT_ARROW           &kp DOWN_ARROW   &kp UP_ARROW          &kp RIGHT_ARROW        &trans 
-&trans                  &trans                &kp NUMBER_1              &kp NUMBER_2           &kp NUMBER_3                   &trans                 &trans      &trans                   &trans           &trans                &trans                 &trans
-                                                                        &trans                 &trans                         &trans                 &trans      &trans                   &trans 
+&trans                  &trans                &kp NUMBER_7              &kp NUMBER_8           &kp NUMBER_9                   &trans                 &trans                &trans                   &trans           &trans                &trans                 &trans
+&trans                  &trans                &hm_l LALT NUMBER_4       &hm_l LCTRL NUMBER_5   &hm_l LSHFT NUMBER_6           &kp NUMBER_0           &kp LEFT_ARROW        &kp DOWN_ARROW           &kp UP_ARROW     &kp RIGHT_ARROW        &trans                &trans
+&trans                  &trans                &kp NUMBER_1              &kp NUMBER_2           &kp NUMBER_3                   &trans                 &trans                &trans                   &trans           &trans                &trans                 &trans
+                                                                        &trans                 &trans                         &trans                 &trans                &trans                   &trans 
             >;
         };
 
