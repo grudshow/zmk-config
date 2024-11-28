@@ -13,7 +13,7 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
 
-            bindings = <&mo>, <&num_word>;
+            bindings = <&mo>, <&trans>;
         };
 			
 	};
